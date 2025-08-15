@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photobooth Frame</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: black;
+    }
+    #camera-container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+    #my_camera {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    #frame {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+<div id="camera-container">
+  <div id="my_camera"></div>
+  <img id="frame" src="frame_transparent.png" alt="Frame">
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.min.js"></script>
+<script>
+  Webcam.set({
+    width: window.innerWidth,
+    height: window.innerHeight,
+    image_format: 'png',
+    jpeg_quality: 100,
+    constraints: {
+      facingMode: "user" // kamera depan
+    }
+  });
+  Webcam.attach('#my_camera');
+</script>
+
+</body>
+</html>
